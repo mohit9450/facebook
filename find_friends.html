@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script type="text/javascript" src="/fb_chat/find_friends1.json"></script> -->
+    <title>Document</title>
+    <style>
+     tr{
+        display: flex;
+    justify-content: space-between;
+    width: 100vh;
+    font-size: 51px;
+      }
+      .table4{
+        display: flex;
+    justify-content: space-between;
+    width: 93vw;
+    font-size: 32px;
+      }
+
+    </style>
+</head>
+<body>
+  
+    <table >
+        <thead>
+          <tr  id="first">
+            <td>name</td>
+            <td>friends</td>
+            <td style="width: 150px;"></td>
+            <td style="width: 150px;"></td>
+            </tr>
+        </thead>
+
+    </table>
+    <table id="table1">
+
+    </table>
+
+    <script>
+        // const fs = require('fs');
+        // const tr = document.createElement('tr');
+        // const td = document.createElement('th');
+        // const td2 = document.createElement('th');
+
+        // const text1 = document.createTextNode('mmsdkjd');
+        // const text2 = document.createTextNode('mmsdkjd');
+        // td.appendChild(text1);
+        // td2.appendChild(text2);
+        // const mm=document.getElementById('second');
+        // // td.appendChild(text2);
+        // tr.appendChild(td);
+        // tr.appendChild(td2);
+        // // tr.appendChild(td);
+        // // tr.appendChild(td);
+        // mm.appendChild(tr);
+        var socket = io();
+        var own_id=-1;
+
+          socket.emit('get_id',10);
+
+      socket.on('get_id',(id)=>{
+          console.log("ys i am here")
+            if(own_id==-1)
+            own_id=id;
+        })
+        socket.emit('find_friend');
+        
+
+        // fetchMovies();
+
+//         async function fetchMovies() {
+//   const response = await fetch('/find_friends1');
+//   // waits until the request completes...
+//   console.log(response);
+// }
+        // fetch('./public/find_friends1.json')
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data);
+        // })
+  //       var data1;
+      const data = fetch('http://localhost:3000/find_friend')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    data1 = data;
+    console.log(data);
+    const table2 = document.getElementById('table1');
+
+    console.log(own_id);
+    for(var i=0;i<data.length;i++){
+      console.log(own_id);
+      if(data[i]._id==own_id)
+      continue;
+      const row = table2.insertRow(i);
+      row.classList.add('table4');
+
+      row.insertCell(0).innerHTML = data[i].first_name;
+      row.insertCell(1).innerHTML = data[i].email;
+      const c=  data[i].first_name;
+      row.insertCell(2).innerHTML = '<button name='+c+' onclick="mess3(\''+data[i]._id+'\')">message</button>';
+      row.insertCell(3).innerHTML = '<button name='+c+'id=\''+data[i]._id+'\' onclick="request(\''+data[i]._id+'\')">Send request</button>';
+      // row.insertCell(2).innerHTML = c;
+      // row.insertCell(2).onclick = function(){
+        // location.replace('http://localhost:3000/home/messanger/');
+      // }
+      // console.log("js");
+      console.log(data[i].first_name);
+    }
+
+  })
+  .catch(function (err) {
+    console.log(err);
+  })
+
+      function mess3(e){
+      //  console.log(e);
+      // console.log("jsksd");
+       socket.emit('pass_friend_id',e);
+       socket.on('pass_friend_id',(self_id)=>{
+        setTimeout(()=>{location.replace("http://localhost:3000/home/messanger/"+e+self_id);},1000);
+       })
+       
+         
+    }
+    function request(e){
+      console.log(e);
+      var re = document.getElementById(e);
+      if(re.innerHTML=='Send request'){
+        re.innerHTML = 'request sent';
+      }
+      else{
+        re.innerHTML = 'Send request';
+      }
+    }
+    </script>
+</body>
+</html>

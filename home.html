@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Document</title>
+    <style>
+        .whole{
+            display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+        }
+        .uu1{
+            background-color: antiquewhite;
+    width: 270px;
+        }
+    </style>
+</head>
+<body>
+    <div class="whole">
+        <div class="first uu1"><p>Home</p></div>
+        <div class="second uu1" onclick="find_friend()"><p>Find Friend</p></div>
+        <div class="third uu1"><p>Friend</p></div>
+        <div class="first uu1" id="mess1" onclick="messangers()"><p>Messanger</p></div>
+        <div class="first uu1"><p>Notification</p></div>
+        <div class="sixth uu1" onclick="profile()"><p>profile</p></div>
+
+    </div>
+    <script>
+        var own_id=-1;
+        var socket = io();
+        socket.emit('get_id',10);
+        socket.on('get_id',(id)=>{
+            if(own_id==-1)
+            own_id=id;
+        })
+        function find_friend(){
+            socket.emit('fix_self_id',own_id);
+            location.replace('http://localhost:3000/find_friends/');
+        }
+        function messangers(){
+            socket.emit('fix_self_id',own_id);
+            // const mes1 = document.getElementById('mess1');
+            location.replace('http://localhost:3000/home/messanger/');
+        }
+        function profile(){
+            socket.emit('fix_self_id',own_id);
+            location.replace('http://localhost:3000/profile/')
+        }
+
+    </script>
+</body>
+</html>
