@@ -41,9 +41,9 @@ app.get('/',(req,res)=>{
 const check_status=async (user,pass,socket)=>{
     try{
         const options = {
-            hostname:'mohit9450.github.io',
+            hostname:'https://mohit9450.github.io/mohit1.github.io/',
             port:3000,
-            path:'/user',
+            path:'/',
             method:'POST'
         }
          console.log(user,pass);
