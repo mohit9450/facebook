@@ -273,7 +273,7 @@
             var user_names=document.getElementById("user_name2").value;
             var pass_words= document.getElementById("pass_word2").value;
             // const urls = "http://localhost:3000/user?"+user_names;
-            const urls = "http://localhost:3000/home";
+           // const urls = "http://localhost:3000/home";
 
 
 
@@ -282,7 +282,7 @@
             // console.log(urls);
             // location.replace(urls);
             // location.replace("http://localhost:3000/user/")
-            console.log(document.URL);
+            console.log(document.URL+'/home');
             socket.emit('check',user_names,pass_words);
             socket.on('log_in',()=>{
                 location.replace(document.URL+'/home');
