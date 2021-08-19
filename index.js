@@ -219,4 +219,3 @@ server.listen(3000,()=>{
     console.log('listining.....');
 })
 
-module.exports = io;
