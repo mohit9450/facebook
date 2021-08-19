@@ -107,6 +107,7 @@ const check_status=async (user,pass,socket)=>{
         // console.log(result);
     }
     catch(err){
+        console.log("mohit");
         console.log(err);
     }
 }
