@@ -15,45 +15,6 @@ const validator = require('validator');
 const mongoose = require('mongoose');
 const PlayList = require('./models/collections');
 const { static } = require('express');
-// mongoose.connect("mongodb://localhost:27017/fb_chat" ,{useNewUrlParser:true, useUnifiedTopology:true}).then(() =>{
-//     console.log("cinnection succefully....");
-// }).catch((err)=>{
-//     console.log(err);
-// });
-
-// const playListSchema = new mongoose.Schema({
-//     first_name:{
-//         type:String,
-//         // required:true,
-//         // lowercase:true,
-//         // trim : true,
-//         // minlength : 2,
-//         // maxlength: 30
-//     },
-//     Surname:{
-//         type:String,
-//         // required:tr
-//     },
-//     password:{
-//         type:String
-//     },
-//     email : {
-//         type: String
-//         // unique : true,
-//         // validate(value){
-//         //     if(validator.isEmail(value))
-//         //     throw new Error("email is invalid");
-//         // }
-//     },
-//     dob : {
-//         type :Date
-//     },
-//     gender : {
-//         type : String
-//     }
-// })
-
-// const PlayList = new mongoose.model("PlayList",playListSchema);
 var self_id;
 var friend_id;
 const documentsw =async (name,surname,emails,pass,genders)=>{
@@ -92,13 +53,7 @@ const check_status=async (user,pass,socket)=>{
             console.log(result[0]["_id"]);
             self_id = result[0]["_id"];
             console.log("log in success fully");
-            // const urls = "http://localhost:3000/user?"+user;
-            // window.location.replace(urls);
             socket.emit('log_in');
-            // http.request(options,res =>{
-                
-            //     console.log("succesfully...");
-            // })
 
         }
         else{
