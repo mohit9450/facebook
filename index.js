@@ -11,7 +11,6 @@ const io= new  Server(server);
 
 require('./db/connection');
 
-
 const validator = require('validator');
 const mongoose = require('mongoose');
 const PlayList = require('./models/collections');
