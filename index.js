@@ -80,12 +80,12 @@ app.get('/',(req,res)=>{
 const check_status=async (user,pass,socket)=>{
     try{
         const options = {
-            hostname:'localhost',
+            hostname:'mohit9450.github.io',
             port:3000,
             path:'/user',
             method:'POST'
         }
-        // console.log(user,pass);
+         console.log(user,pass);
         const result = await PlayList.find({$and : [ {first_name:user},{password:pass} ]});
         console.log(result.length);
         if(result.length!=0){
