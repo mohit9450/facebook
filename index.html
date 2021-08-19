@@ -285,7 +285,7 @@
             console.log(document.URL);
             socket.emit('check',user_names,pass_words);
             socket.on('log_in',()=>{
-                location.replace(urls);
+                location.replace(document.URL+'/home');
             })
         }
     </script>
