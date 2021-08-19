@@ -103,7 +103,7 @@ io.on('connection',(socket)=>{
         documentsw(name,surname,emails,pass,genders);
     })
     socket.on('check',(user_names,pass_words)=>{
-      //  console.log("sjkjsdkjsdkjskjskdjdjsjsjskdjskd");
+        console.log("sjkjsdkjsdkjskjskdjdjsjsjskdjskd");
         // res.send(__dirname+'/index1.html');
         check_status(user_names,pass_words,socket);
     })
