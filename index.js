@@ -211,7 +211,9 @@ app.get('/home/messanger/:id',(req,res)=>{
 app.get('/profile',(req,res)=>{
     res.sendFile(__dirname+'/profile.html')
 })
-
+app.get('/socket.io/socket.io.js',(req,res)=>{
+    res.sendFile(__dir+'/socket.io/socket.io.js');
+})
 
 
 
