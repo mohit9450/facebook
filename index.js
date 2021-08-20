@@ -6,7 +6,7 @@ const {Server} = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const fs = require('fs');
-const io= new  Server(server);
+const io= require('socket.io')(server);
 
 
 require('./db/connection');
