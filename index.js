@@ -8,10 +8,7 @@ const server = http.createServer(app);
 const fs = require('fs');
 const io= require('socket.io')(server,{
      // below are engine.IO options
-  pingInterval: 10000,
-  pingTimeout: 5000,
-  cookie: false,
-  transports:["polling", "websocket"]
+     allowEI03:true
 });
 
 io.set('transports', ['polling','websocket']);
