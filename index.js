@@ -14,7 +14,7 @@ const io= require('socket.io-client')(server,{
   transports:["polling", "websocket"]
 });
 
-
+io.set('transports', ['polling','websocket']);
 require('./db/connection');
 
 const validator = require('validator');
