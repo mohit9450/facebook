@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
-    <script src="http://[serverip]:3000/socket.io/socket.io.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--     <script src="http://[serverip]:3000/socket.io/socket.io.js" type="text/javascript"></script> -->
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
 
     <script src="/mohit1.github.io/public/socket.io/client-dist/socket.io.js"></script>
     <!-- <script src="blob/master/node_modules/socket.io/client-dist/socket.io.js"></script> -->
@@ -236,6 +236,8 @@
 
         </div>
     </div>
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
         const c=document.getElementById("who1");
         // const c=document.getElementById("who1").addEventListener("click",)
@@ -248,7 +250,7 @@
         }
         var create_acc = document.getElementById("mohit5");
 
-        var socket = io.connect('https://mohit9450.github.io/mohit1.github.io/',{reconnect : true
+        var socket = io.connect('http://localhost:3000/',{reconnect : true
         ,transports:['websocket','polling']
     });
         create_acc.onclick=function(){
