@@ -83,7 +83,7 @@
         //     console.log(data);
         // })
   //       var data1;
-      const data = fetch('http://localhost:3000/find_friend')
+      const data = fetch('/find_friend')
   .then(function (response) {
     return response.json();
   })
@@ -123,7 +123,7 @@
       // console.log("jsksd");
        socket.emit('pass_friend_id',e);
        socket.on('pass_friend_id',(self_id)=>{
-        setTimeout(()=>{location.replace("http://localhost:3000/home/messanger/"+e+self_id);},1000);
+        setTimeout(()=>{location.replace("/home/messanger/"+e+self_id);},1000);
        })
        
          
