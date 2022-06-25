@@ -40,16 +40,16 @@
         })
         function find_friend(){
             socket.emit('fix_self_id',own_id);
-            location.replace('http://localhost:3000/find_friends/');
+            location.replace('/find_friends/');
         }
         function messangers(){
             socket.emit('fix_self_id',own_id);
             // const mes1 = document.getElementById('mess1');
-            location.replace('http://localhost:3000/home/messanger/');
+            location.replace('/home/messanger/');
         }
         function profile(){
             socket.emit('fix_self_id',own_id);
-            location.replace('http://localhost:3000/profile/')
+            location.replace('/profile/')
         }
 
     </script>
