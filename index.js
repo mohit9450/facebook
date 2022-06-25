@@ -4,6 +4,7 @@ const express = require('express');
 const url = require('url');
 const {Server} = require('socket.io-client');
 const app = express();
+const PORT = process.env.PORT || 3000;
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -181,7 +182,7 @@ app.get('/profile',(req,res)=>{
 
 
 
-server.listen(3000,()=>{
+server.listen(PORT,()=>{
     console.log('listining.....');
 })
 
