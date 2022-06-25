@@ -1,10 +1,12 @@
 
 const http = require('http');
+const path = require('path');
 const express = require('express');
 const url = require('url');
 const {Server} = require('socket.io-client');
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
