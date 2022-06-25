@@ -14,10 +14,7 @@ app.use(function(req, res, next) {
 });
 const server = http.createServer(app);
 const fs = require('fs');
-const io= require('socket.io')(server,{
-     // below are engine.IO options
-     allowEI03:true
-});
+const io= require('socket.io')(server);
 
 // io.set('transports', ['polling','websocket']);
 require('./db/connection');
@@ -51,12 +48,6 @@ app.get('/',(req,res)=>{
 })
 const check_status=async (user,pass,socket)=>{
     try{
-        const options = {
-            hostname:'https://mohit9450.github.io/',
-            port:3000,
-            path:'mohit1.github.io/',
-            method:'POST'
-        }
          console.log(user,pass);
         const result = await PlayList.find({$and : [ {first_name:user},{password:pass} ]});
         console.log(result.length);
