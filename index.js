@@ -18,7 +18,7 @@ const io= require('socket.io')(server,{
      allowEI03:true
 });
 
-io.set('transports', ['polling','websocket']);
+// io.set('transports', ['polling','websocket']);
 require('./db/connection');
 
 const validator = require('validator');
